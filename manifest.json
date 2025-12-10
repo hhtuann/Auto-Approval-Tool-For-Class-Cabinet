@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Auto-Approval Tool For Class Cabinet",
+    "version": "1.0.0",
+    "description": "Hỗ trợ ban cán sự lớp duyệt minh chứng điểm rèn luyện trên slink.ptit.edu.vn",
+    "icons": {
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://slink.ptit.edu.vn/*"
+            ],
+            "js": [
+                "inject.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "page.js"
+            ],
+            "matches": [
+                "https://slink.ptit.edu.vn/*"
+            ]
+        }
+    ]
+}
