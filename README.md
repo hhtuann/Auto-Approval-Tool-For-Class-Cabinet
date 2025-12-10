@@ -18,7 +18,6 @@ Do đây là công cụ phát triển cá nhân (chưa đưa lên Store), bạn 
 2. **Mở trình quản lý tiện ích:** Truy cập đường dẫn `chrome://extensions/` trên trình duyệt (Chrome, Edge, Cốc Cốc...).
 3. **Bật Developer Mode:** Gạt công tắc **"Developer mode"** ở góc trên bên phải màn hình.
 4. **Tải tiện ích:** Nhấn nút **"Load unpacked"** và chọn thư mục chứa mã nguồn vừa giải nén.
-dụng
 
 ## Cách sử dụng
 
