@@ -156,6 +156,9 @@
 
         const approveBtn = addBtn.cloneNode(true);
         approveBtn.id = "approveAllBtn";
+        approveBtn.style.background = "#28a745";
+        approveBtn.onmouseover = () => approveBtn.style.background = "#33b250";
+        approveBtn.onmouseout = () => approveBtn.style.background = "#28a745";
 
         approveBtn.innerHTML = `<i class="bx bx-check-circle bxr" style="font-size:16px; vertical-align:middle;"></i> Duyệt tất cả`;
 

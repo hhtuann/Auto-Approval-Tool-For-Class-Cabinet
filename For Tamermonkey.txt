@@ -13,14 +13,6 @@
     const API_PREFIX = "https://gwdu.ptit.edu.vn/slink/khai-bao-minh-chung/ban-can-su";
     let lastResults = [];
 
-    // ====== Load Boxicons ======
-    function ensureBoxiconsLoaded() {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = "https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css";
-        document.head.appendChild(link);
-    }
-
     // ====== Ant Design style notify ======
     function antNotify(message, type = "success") {
         const colors = {
@@ -87,9 +79,7 @@
 
         wrapper.style.opacity = "0";
         wrapper.style.transform = "translate(-50%, -26px)";
-        // xuất hiện từ trên ↓
         wrapper.style.transition = "opacity 0.28s ease, transform 0.28s ease";
-
         wrapper.style.zIndex = "999999";
 
         wrapper.innerHTML = `
@@ -112,21 +102,18 @@
 
         document.body.appendChild(wrapper);
 
-        // 👉 Hiệu ứng hiện: trượt từ trên xuống + fade in
         requestAnimationFrame(() => {
             wrapper.style.opacity = "1";
             wrapper.style.transform = "translate(-50%, 0)";
         });
 
-        // 👉 2.5s sau: trượt lên một chút (ngắn hơn) rồi biến mất
         setTimeout(() => {
-            wrapper.style.transform = "translate(-50%, -12px)"; // trượt lên nhẹ
+            wrapper.style.transform = "translate(-50%, -12px)";
             wrapper.style.opacity = "0";
 
             setTimeout(() => wrapper.remove(), 500);
         }, 2500);
     }
-
 
     // ====== Helpers ======
     function getToken() {
@@ -159,7 +146,7 @@
         if (reloadBtn) reloadBtn.click();
     }
 
-    // ====== Tạo nút với icon Boxicons ======
+    // ====== Tạo nút ======
     function createButton() {
         if (document.getElementById("approveAllBtn")) return;
 
@@ -169,10 +156,16 @@
             return;
         }
 
-        ensureBoxiconsLoaded();
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css";
+        document.head.appendChild(link);
 
         const approveBtn = addBtn.cloneNode(true);
         approveBtn.id = "approveAllBtn";
+        approveBtn.style.background = "#28a745";
+        approveBtn.onmouseover = () => approveBtn.style.background = "#33b250";
+        approveBtn.onmouseout = () => approveBtn.style.background = "#28a745";
 
         approveBtn.innerHTML = `<i class="bx bx-check-circle bxr" style="font-size:16px; vertical-align:middle;"></i> Duyệt tất cả`;
 
@@ -185,7 +178,7 @@
         addBtn.parentNode.insertBefore(approveBtn, addBtn.nextSibling);
     }
 
-    // ====== Duyệt tất cả (không confirm) ======
+    // ====== Duyệt tất cả ======
     async function approveAll() {
         let token;
         try {
